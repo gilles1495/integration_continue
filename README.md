@@ -25,8 +25,15 @@ My personal project is a text editor coded in c ++ with the Qt framework.
 	- [x] Add project PHP Laravel from repository https://github.com/vanessakovalsky/laravel-kingoludo.git into your repository
 	- [x] Build and run docker ``` docker build --tag my-gradle .gradle ```
 	- [x] Create build.gradle in your project root
-- [ ] TP3 : Nexus
-- [ ] TP4 : 
+- [x] TP3 : Nexus
+	- [x] Create the file docker-compose.yml and add it in the root folder
+	- [x] Launch docker compose with : ``` docker-compose up -d ```
+	- [x] Check for the launch of the 2 containers with ``` docker-compose ps ``` and check if nexus finished launching with ``` docker logs -f nexus ``` who show this line : ``` Started Sonatype Nexus OSS 3.23.0-03 ```
+	- [x] Go to  http://localhost:8099 and connect with the login admin and the password we get from the commands ``` docker exec -t -i nexus sh ``` and ``` cat nexus-data/admin.password ```
+	- [x] Run ``` docker network ls ``` and ``` docker network inspect ``` to get ip address of the network
+	- [x] Add the file gradle.properties and add the publication in the build.gradle
+	- [x] Launch the publication with ``` docker-compose up --build ```
+- [ ] TP4 : Test
 - [ ] TP5 : 
 - [ ] TP6 : 
 - [ ] TP7 : 
