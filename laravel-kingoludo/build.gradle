@@ -37,7 +37,7 @@ task test(type:Exec, dependsOn: installDeps) {
   args '-c', "php \
     './_project/vendor/phpunit/phpunit/phpunit' \
     --configuration='./_project/phpunit.xml' \
-    --log-junit='./logs/unitreport.xml'\
+    --log-junit='./build/reports/unitreport.xml'\
     ./_project/tests"
 }
 
@@ -129,6 +129,6 @@ assemble.dependsOn packageDistribution
 sonarqube {
     properties {
         property "sonar.sources", "app"
-        property "sonar.php.tests.reportPath", "build/reports/unitreport.xml"
+        property "sonar.php.tests.reportPath", "./build/reports/unitreport.xml"
     }
 }
