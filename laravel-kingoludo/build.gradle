@@ -51,7 +51,7 @@ task phploc(type: Exec, description: 'Measure project size using PHPLOC') {
 
 task phpmd(type : Exec, description : "Perform project mess detection using PHPMD, and Creating a log file for the Continuous Integration Server"){
 	executable 'sh'
-	args '-c',"/home/ubuntu/tools/phpmd ./app \
+	args '-c',"/home/ubuntu/tools/phpmd ./_project/app \
     xml './phpmd.xml' \
     --reportfile './build/reports/phpmd.xml'\
     --ignore-violations-on-exit"
@@ -61,7 +61,7 @@ task phpcpd(type : Exec, description : "Find duplicate code using PHPCPD and log
 	executable 'sh'
 	args '-c',"/home/ubuntu/tools/phpcpd \
     --log-pmd './build/reports/pmd-cpd.xml' \
-    ./app"
+    ./_project/app"
 }
 
 task phpcs(type : Exec, description : "Find Coding Standard Violations using PHP_CodeSniffer"){
@@ -74,13 +74,13 @@ task phpcs(type : Exec, description : "Find Coding Standard Violations using PHP
     --ignore=autoload.php \
     --runtime-set ignore_errors_on_exit 1 \
     --runtime-set ignore_warnings_on_exit 1 \
-    ./app/"
+    ./_project/app/"
 }
 
 task phpdox(type : Exec, description : "Generating Docs enriched with pmd, checkstyle, phpcs,phpunit,phploc"){
 	executable 'sh'
 	args '-c',"/home/ubuntu/tools/phpdox \
-    -f ./phpdox.xml"
+    -f ./_project/phpdox.xml"
 }
 
 def tarfile = "application-" + version
