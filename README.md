@@ -54,4 +54,8 @@ My personal project is a text editor coded in c ++ with the Qt framework.
 - [x] TP6 : Quality
 	- [x] Add tasks phpcs, phpmd, phpdox, phpcpd and phploc to build.gradle
 	- [x] Add tasks phpcs, phpmd, phpdox, phpcpd and phploc to build step in Jenkins
-- [ ] TP7 : SonarQube
+- [x] TP7 : SonarQube
+	- [x] If plugin sonarqube not added in Jenkins, add it in Manage Jenkins > Manage plugin
+	- [x] Add sonarqube dependencie in build.gradle
+	- [x] Add sonarqube configuration in the end of build.gradle
+	- [x] Add sonarqube build step in Jenkins and check "Prepare SonarQube Scanner environment"
