@@ -128,7 +128,7 @@ assemble.dependsOn packageDistribution
 
 sonarqube {
     properties {
-        property "sonar.sources", "app"
+        property "sonar.sources", "./_project/app"
         property "sonar.php.tests.reportPath", "./build/reports/unitreport.xml"
     }
 }
