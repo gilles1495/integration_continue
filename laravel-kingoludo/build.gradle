@@ -6,20 +6,24 @@ buildscript {
   }
   dependencies {
     classpath "gradle.plugin.org.swissphpfriends:php-build-plugin:0.1-SNAPSHOT"
+    classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8"
   }
 }
 
 apply plugin: "org.hasnat.php-build-plugin"
 apply plugin: "distribution"
 apply plugin: "maven-publish"
+apply plugin: "org.sonarqube"
 
-def majorVersion = System.getenv("MAJOR_VERSION") ?: "1"
-def minorVersion = System.getenv("MINOR_VERSION") ?: "0"
-version = majorVersion + "." + minorVersion 
+def env = System.getenv()
+version = "1." + env['BUILD_NUMBER']
 
 task purge(type:Delete) {
   //println 'Cleaning up old files'
   delete 'vendor', 'logs', 'build'
+  doLast {
+	file('build/reports').mkdirs()
+  }
 }
 
 task installDeps(type: org.swissphpfriends.gradle.task.ComposerInstall) {
@@ -121,3 +125,10 @@ publishing {
 assemble.dependsOn packageDistribution
    build.dependsOn assemble
  publish.dependsOn build
+
+sonarqube {
+    properties {
+        property "sonar.sources", "app"
+        property "sonar.php.tests.reportPath", "build/reports/unitreport.xml"
+    }
+}
