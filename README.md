@@ -50,6 +50,8 @@ My personal project is a text editor coded in c ++ with the Qt framework.
 	- [x] Configure job in Jenkins
 	- [x] Add git repository in job settings
 	- [x] Add step of build in job settings
-	- [ ] Configure project repository to automatic start build when new commit pushed
-- [ ] TP6 : Quality
+	- [x] Configure project repository to automatic start build when new commit pushed
+- [x] TP6 : Quality
+	- [x] Add tasks phpcs, phpmd, phpdox, phpcpd and phploc to build.gradle
+	- [x] Add tasks phpcs, phpmd, phpdox, phpcpd and phploc to build step in Jenkins
 - [ ] TP7 : SonarQube
