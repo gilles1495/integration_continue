@@ -27,6 +27,15 @@ task installDeps(type: org.swissphpfriends.gradle.task.ComposerInstall) {
     doNotUpdatePhar = true
 }
 
+task test(type:Exec, dependsOn: installDeps) {
+  //println 'Executing tests'
+  executable 'sh'
+  args '-c', "php \
+    './project/vendor/phpunit/phpunit/phpunit' \
+    --configuration='./project/phpunit.xml' \
+    --log-junit='./logs/unitreport.xml'\
+    ./project/tests"
+}
 
 def tarfile = "application-" + version
 task packageDistribution(type: Zip, dependsOn: installDeps) {
@@ -58,10 +67,10 @@ publishing {
     }
     repositories {
         maven {
-            credentials {
-                username nexusUsername
-                password nexusPassword
-            }
+            //credentials {
+                //username nexusUsername
+                //password nexusPassword
+            //}
             url nexusRepo
         }
     }
