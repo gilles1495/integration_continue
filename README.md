@@ -33,7 +33,21 @@ My personal project is a text editor coded in c ++ with the Qt framework.
 	- [x] Run ``` docker network ls ``` and ``` docker network inspect ``` to get ip address of the network
 	- [x] Add the file gradle.properties and add the publication in the build.gradle
 	- [x] Launch the publication with ``` docker-compose up --build ```
-- [ ] TP4 : Test
-- [ ] TP5 : 
-- [ ] TP6 : 
-- [ ] TP7 : 
+- [x] TP4 : Test
+	- [x] Specify the folder and the task test in build.gradle
+		```task test(type:Exec, dependsOn: installDeps) {
+  				//println 'Executing tests'
+  				executable 'sh'
+  				args '-c', "php \
+   					'./project/vendor/phpunit/phpunit/phpunit' \
+   					--configuration='./project/phpunit.xml' \
+   					--log-junit='./logs/unitreport.xml'\
+  					./project/tests"
+			}```
+- [x] TP5 : Jenkins
+	- [x] Configure job in Jenkins
+	- [x] Add git repository in job settings
+	- [x] Add step of build in job settings
+	- [ ] Configure project repository to automatic start build when new commit pushed
+- [ ] TP6 : Quality
+- [ ] TP7 : SonarQube
