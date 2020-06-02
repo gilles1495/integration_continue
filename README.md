@@ -35,15 +35,17 @@ My personal project is a text editor coded in c ++ with the Qt framework.
 	- [x] Launch the publication with ``` docker-compose up --build ```
 - [x] TP4 : Test
 	- [x] Specify the folder and the task test in build.gradle
-		```task test(type:Exec, dependsOn: installDeps) {
-  				//println 'Executing tests'
-  				executable 'sh'
-  				args '-c', "php \
-   					'./project/vendor/phpunit/phpunit/phpunit' \
-   					--configuration='./project/phpunit.xml' \
-   					--log-junit='./logs/unitreport.xml'\
-  					./project/tests"
-			}```
+		```
+		task test(type:Exec, dependsOn: installDeps) {
+  			//println 'Executing tests'
+  			executable 'sh'
+  			args '-c', "php \
+   				'./project/vendor/phpunit/phpunit/phpunit' \
+   				--configuration='./project/phpunit.xml' \
+   				--log-junit='./logs/unitreport.xml'\
+  				./project/tests"
+		}
+		```
 - [x] TP5 : Jenkins
 	- [x] Configure job in Jenkins
 	- [x] Add git repository in job settings
