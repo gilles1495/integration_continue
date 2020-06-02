@@ -23,7 +23,7 @@ task purge(type:Delete) {
 }
 
 task installDeps(type: org.swissphpfriends.gradle.task.ComposerInstall) {
-    workingDirectory = "./project"
+    workingDirectory = "./_project"
     doNotUpdatePhar = true
 }
 
@@ -31,30 +31,30 @@ task test(type:Exec, dependsOn: installDeps) {
   //println 'Executing tests'
   executable 'sh'
   args '-c', "php \
-    './project/vendor/phpunit/phpunit/phpunit' \
-    --configuration='./project/phpunit.xml' \
+    './_project/vendor/phpunit/phpunit/phpunit' \
+    --configuration='./_project/phpunit.xml' \
     --log-junit='./logs/unitreport.xml'\
-    ./project/tests"
+    ./_project/tests"
 }
 
 def tarfile = "application-" + version
 task packageDistribution(type: Zip, dependsOn: installDeps) {
     archiveFileName = tarfile + ".zip"
-    destinationDirectory = file("project/build")
+    destinationDirectory = file("_project/build")
 
-    from ('project/app') { into 'app' }
-    from ('project/bootstrap') { into 'bootstrap' }
-    from ('project/config') { into 'config' }
-      from ('project/database') { into 'database' }
-      from ('project/nbproject') { into 'nbproject' }
-      from ('project/public') { into 'public' }
-      from ('project/resources') { into 'resources' }
-      from ('project/storage') {
+    from ('_project/app') { into 'app' }
+    from ('_project/bootstrap') { into 'bootstrap' }
+    from ('_project/config') { into 'config' }
+      from ('_project/database') { into 'database' }
+      from ('_project/nbproject') { into 'nbproject' }
+      from ('_project/public') { into 'public' }
+      from ('_project/resources') { into 'resources' }
+      from ('_project/storage') {
         into 'storage'
         dirMode 0775
       }
-      from ('project/vendor') { into 'vendor' }
-      from { 'project/server.php' }
+      from ('_project/vendor') { into 'vendor' }
+      from { '_project/server.php' }
 }
 
 group = 'laravel-kingoludo'
